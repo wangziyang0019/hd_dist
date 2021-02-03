@@ -38,21 +38,10 @@ jobs:
       with:
         cmd: install
 
-    - name: Update Server
-      run: npm run docs:build
-
-    - name: Git Commit And Push
-      uses: stefanzweifel/git-auto-commit-action@v4
+  - name: Install Dependencies
+      uses: borales/actions-yarn@v2.0.0
       with:
-        commit_message: 'chore: Auto update router and changeLog'
-        branch: master
-        commit_options: '--signoff'
-        file_pattern: .
-        repository: .
-        commit_user_name: GitHub Actions
-        commit_user_email: actions@github.com
-        commit_author: GitHub Actions Bot <actions@github.com>
-        skip_dirty_check: true
+        cmd: docs:build
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@3.7.1
